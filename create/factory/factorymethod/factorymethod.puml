@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface IProduct {
+    +void doSomething()
+}
+class ConcreteProductA
+class ConcreteProductB
+IProduct <|.. ConcreteProductA
+IProduct <|.. ConcreteProductB
+
+interface IFactory {
+    +IProduct factoryMethod()
+}
+class ConcreteFactoryA
+class ConcreteFactoryB
+IFactory <|.. ConcreteFactoryA
+IFactory <|.. ConcreteFactoryB
+
+class AppClient
+AppClient ..> ConcreteFactoryA
+AppClient ..> ConcreteFactoryB
+
+ConcreteFactoryA ..>ConcreteProductA
+ConcreteFactoryB ..>ConcreteProductB
+
+@enduml

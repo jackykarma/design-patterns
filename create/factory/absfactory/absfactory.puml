@@ -1,0 +1,37 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface IProductA {
+    +void doSomething()
+}
+
+interface IProductB {
+    +void doSomething()
+}
+
+class ConcreteProductA
+class ConcreteProductB
+IProductA <|.. ConcreteProductA
+IProductB <|.. ConcreteProductB
+
+
+interface IFactory {
+    +IProductA createAProduct()
+    +IProductB createBProduct()
+}
+note top:定义工厂能够生产的产品簇，超级工厂不是只能生产一种产品。\n如何要增加一个新种类的产品，比如C，那么就需要修改抽象工厂IFactory的接口
+
+
+class ConcreteFactoryX
+class ConcreteFactoryY
+
+IFactory <|.. ConcreteFactoryX
+IFactory <|.. ConcreteFactoryY
+
+'依赖关系
+ConcreteFactoryX ..> ConcreteProductA
+ConcreteFactoryX ..> ConcreteProductB
+ConcreteFactoryY ..> ConcreteProductA
+ConcreteFactoryY ..> ConcreteProductB
+
+@enduml
