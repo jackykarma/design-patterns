@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+'不能用接口
+abstract class Builder {
+    +buildPartA()
+    +buildPartB()
+    +buildPartC()
+    +getResult()
+}
+class ConcreteBuilder {
+    +buildPartA()
+    +buildPartB()
+    +buildPartC()
+    +getResult()
+}
+
+Builder <|.. ConcreteBuilder
+
+class Director {
+    -Builder builder
+    +build()
+}
+note left of Director::build()
+builder.buildPartA();
+builder.buildPartB();
+builder.buildPartC();
+builder.getResult()
+end note
+
+Director o- Builder: aggregation
+
+class Product
+ConcreteBuilder .> Product
+
+@enduml
