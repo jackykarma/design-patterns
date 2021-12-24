@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Abstraction
+note top of Abstraction: 定义抽象类的接口
+
+class RefinedAbstraction2
+class RefinedAbstraction1
+note left of RefinedAbstraction2: 扩充由Abstraction定义的接口
+
+Abstraction <|.. RefinedAbstraction2
+Abstraction <|.. RefinedAbstraction1
+
+interface Implementor
+note right of Implementor: 定义实现类的接口
+
+class ConcreteImplementor1
+class ConcreteImplementor2
+note right of ConcreteImplementor2: 实现Implementor接口
+
+Implementor <|.. ConcreteImplementor2
+Implementor <|.. ConcreteImplementor1
+
+Abstraction o- Implementor: impl
+
+class AppClient
+AppClient ..> Abstraction: abstraction
+
+@enduml
