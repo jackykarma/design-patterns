@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Subject {
+    +void request()
+}
+note top of Subject: Subject类定义了RealSubject和Proxy的共用接口，\n这样就在任何使用RealSubject的地方都可以是使用Proxy
+
+class Proxy {
+    +void request()
+}
+note bottom of Proxy: 保存一个引用使得代理可以访问实体，并提供一个与\nSubject相同的接口，这样代理就可以用来代替实体
+
+Subject <|.. Proxy
+
+class RealSubject {
+    +void request()
+}
+note right of RealSubject: 定义Proxy所代表的实体类
+
+Subject <|.. RealSubject
+
+Proxy .> RealSubject: realSubject
+
+class AppClient
+AppClient -> Subject
+
+@enduml
