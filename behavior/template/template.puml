@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class AbstractClass {
+    +algorithm()
+    -step1()
+    #step2Variable()
+    -step3()
+}
+
+class ConcreteClass {
+    {method} step2Variable()
+}
+
+AbstractClass <|-- ConcreteClass
+
+@enduml
