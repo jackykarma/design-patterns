@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Handler {
+    -Handler successor
+    +void setSuccessor()
+    +void handleRequest()
+}
+
+class ConcreteHandler1 {
+    +void handleRequest()
+}
+
+class ConcreteHandler2 {
+    +void handleRequest()
+}
+
+Handler <|.. ConcreteHandler1
+Handler <|.. ConcreteHandler2
+
+'ConcreteHandler1 -> ConcreteHandler2: mHandler
+
+class AppClient {
+
+}
+
+AppClient -> Handler
+
+@enduml
