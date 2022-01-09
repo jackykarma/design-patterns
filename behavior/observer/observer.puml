@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Subject {
+    -List observerList;
+    +void registerObserver(Observer observer);
+    +void removeObserver((Observer observer);
+    void updateState();
+}
+
+interface Observer {
+    void updateState()
+}
+
+class ConcreteSubject {
+}
+Subject <|.. ConcreteSubject
+Subject -> Observer: observerList
+
+class ConcreteObserver {
+    + void updateState()
+}
+Observer <|.. ConcreteObserver
+
+class AppClient {}
+AppClient --> Subject
+AppClient --> Observer
+
+@enduml
